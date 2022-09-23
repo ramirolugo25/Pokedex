@@ -231,7 +231,7 @@ function cargarPokemonTarjeta(pokemon){
         if(urlImagenPokemon){
             document.querySelector('#tarjeta-pokemon #imagen-pokemon').src = urlImagenPokemon;
         }else{
-            document.querySelector('#tarjeta-pokemon #imgen-pokemon').src = 'imagenes/bola-pokemon.png'
+            document.querySelector('#tarjeta-pokemon #imagen-pokemon').src = 'imagenes/bola-pokemon.png'
         }
 
         document.querySelector('#tarjeta-pokemon #id').textContent = `Id: ${pokemon.id}`;
