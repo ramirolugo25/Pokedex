@@ -1,18 +1,17 @@
-let numeroPaginaActual = 1;
-let numeroUltimaPagina;
 
-cargarPokemones(numeroPaginaActual);
-cargarPaginacion();
-document.querySelector('#quit img').onclick = manejarInputQuit;
-document.querySelector('#boton-buscar').onclick = manejarInputBuscar;
+import {
+  cargarPokemones,
+  cargarPaginacion,
+  inicializarInputs,
+} from './utilidadades.js';
 
+const numeroPaginaActual = 1;
 
+async function inicializar() {
+  await cargarPokemones(numeroPaginaActual);
+  await cargarPaginacion();
+  inicializarInputs();
+}
 
-    
-
-
-
-
-
-
+inicializar();
 
