@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Pokédex</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="shortcut icon" href="imagenes/bola-pokemon.png">
+    <link rel='stylesheet' type='text/css' media='screen' href='index.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+
+</head>
+
+<body>
+
+    <div id="contenedor-principal">
+        <img id="logo-pokedex" src="imagenes/logo-pokedex.png" alt="">
+
+        <div id="busqueda">
+            <input type="text" placeholder="Buscar por Nombre o Id">
+            <button id="boton-buscar">Buscar</button>
+        </div>
+        <div id="error" class="oculto">
+            <strong>Error: Pokemon no encontrado</strong>
+        </div>
+
+        <div id="contenedor-pokemones">
+
+
+        </div>
+
+        <div id="paginacion">
+            <button id="anterior" disabled>«</button>
+        </div>
+
+    </div>
+
+    <div id="tarjeta-pokemon" class="oculto">
+        <div id="quit">
+            <img src="imagenes/cruz.png" alt="">
+        </div>
+        <img id='imagen-pokemon' src="" alt="">
+        <label id="id">Id: </label>
+        <label id="name">Name: </label>
+        <label id="height">Height: </label>
+        <label id="weight">Weight: </label>
+        <div id="tipos">
+            <label>Tipo:</label>
+        </div>
+
+    </div>
+
+    <div id="carga" class="oculto">
+        <p>Cargando...</p>
+    </div>
+
+
+
+    <script src='src/index.js' type="module"></script>
+</body>
+
+</html>
