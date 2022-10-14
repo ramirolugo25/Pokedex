@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress-dev": "cypress open",
+    "cypress-run": "cypress run",
+    "serve": "http-server -c-1",
+    "test:ui:dev": "run-p serve cypress-dev"
   },
   "repository": {
     "type": "git",
@@ -17,8 +21,11 @@
   },
   "homepage": "https://github.com/ramirolugo25/Pokedex#readme",
   "devDependencies": {
+    "cypress": "^10.10.0",
     "eslint": "^8.24.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint-plugin-import": "^2.26.0",
+    "jest": "^29.1.2",
+    "npm-run-all": "^4.1.5"
   }
 }
