@@ -1,4 +1,3 @@
-
 import {
   cargarPokemones,
   cargarPaginacion,
@@ -14,4 +13,3 @@ async function inicializar() {
 }
 
 inicializar();
-

@@ -5,11 +5,11 @@ import {
 } from './pokeAPI.js';
 
 function guardarPokemones(numeroPagina, pokemones) {
-  localStorage.setItem(numeroPagina, JSON.stringify(pokemones));
+  localStorage.setItem(`pagina-${numeroPagina}`, JSON.stringify(pokemones));
 }
 
 export async function obtenerPokemones(numeroPagina) {
-  let pokemones = JSON.parse(localStorage.getItem(numeroPagina));
+  let pokemones = JSON.parse(localStorage.getItem(`pagina-${numeroPagina}`));
 
   if (pokemones === null) {
     pokemones = await obtenerPokemonesAPI(numeroPagina);
