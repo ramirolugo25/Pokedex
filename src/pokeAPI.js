@@ -11,7 +11,7 @@ export function obtenerCantidadDePokemonesAPI() {
     .then((respuestaJSON) => respuestaJSON.count);
 }
 
-export function obetenerPokemonAPI(nombreID) {
+export function obtenerPokemonAPI(nombreID) {
   const URL_BASE = 'https://pokeapi.co/api/v2/pokemon/';
   return fetch(`${URL_BASE}${nombreID}`)
     .then((respuesta) => {

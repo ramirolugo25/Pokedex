@@ -1,7 +1,7 @@
 import {
   obtenerPokemonesAPI,
   obtenerCantidadDePokemonesAPI,
-  obetenerPokemonAPI,
+  obtenerPokemonAPI,
 } from './pokeAPI.js';
 
 function guardarPokemones(numeroPagina, pokemones) {
@@ -59,7 +59,7 @@ export async function obtenerPokemon(nombreID) {
   let pokemon = JSON.parse(localStorage.getItem(nombreID));
 
   if (pokemon === null) {
-    pokemon = await obetenerPokemonAPI(nombreID);
+    pokemon = await obtenerPokemonAPI(nombreID);
 
     try {
       guardarPokemon(nombreID, pokemon);

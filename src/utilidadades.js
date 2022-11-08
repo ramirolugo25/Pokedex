@@ -5,7 +5,7 @@ import {
   agregarPokemon,
   ocultarContenedorCargando,
   cargarBotonPosterior,
-  desabilitarPrimeraPagina,
+  deshabilitarPrimeraPagina,
   cargarPokemonTarjeta,
 } from './ui.js';
 
@@ -60,7 +60,7 @@ export async function cargarPaginacion() {
     $paginacion.appendChild($boton);
   }
   cargarBotonPosterior();
-  desabilitarPrimeraPagina();
+  deshabilitarPrimeraPagina();
 }
 
 function manejarInputBotonesPaginacion(e) {

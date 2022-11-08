@@ -51,7 +51,7 @@ export function cargarBotonPosterior() {
   $paginacion.appendChild($boton);
 }
 
-export function desabilitarPrimeraPagina() {
+export function deshabilitarPrimeraPagina() {
   document.querySelector('#boton-1').disabled = true;
 }
 
