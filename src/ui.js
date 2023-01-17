@@ -1,3 +1,7 @@
+// import { Pokemon } from "./Pokemon";
+
+
+
 export function borrarPokemones() {
   document.querySelectorAll('.pokemon').forEach(($pokemon) => {
     $pokemon.remove();
@@ -14,18 +18,17 @@ export function agregarClasesNombresPokemones(pokemones) {
   });
 }
 
-export function agregarPokemon(datosPokemon) {
+export function agregarPokemon(pokemon) {
   const {
-    sprites: { front_default: foto },
     id,
     name: nombre,
-  } = datosPokemon;
+  } = pokemon;
   const imagenPokemon = document.createElement('img');
 
-  if (foto === null) {
+  if (pokemon.primeraImagen() === null) {
     imagenPokemon.src = 'imagenes/bola-pokemon.png';
   } else {
-    imagenPokemon.src = foto;
+    imagenPokemon.src = pokemon.primeraImagen();
   }
 
   const $labelID = document.createElement('label');
@@ -70,30 +73,21 @@ function bloquearInput() {
 
 export function cargarPokemonTarjeta(pokemon) {
   const {
-    sprites: { other: { 'official-artwork': { front_default: imagen } } },
     id,
     name: nombre,
-    height: altura,
-    weight: peso,
   } = pokemon;
 
-  if (imagen) {
-    document.querySelector('#tarjeta-pokemon #imagen-pokemon').src = imagen;
+  if (pokemon.segundaImagen()) {
+    document.querySelector('#tarjeta-pokemon #imagen-pokemon').src = pokemon.segundaImagen();
   } else {
     document.querySelector('#tarjeta-pokemon #imagen-pokemon').src = 'imagenes/bola-pokemon.png';
   }
 
   document.querySelector('#tarjeta-pokemon #id').textContent = `Id: ${id}`;
   document.querySelector('#tarjeta-pokemon #name').textContent = `Name: ${nombre}`;
-  document.querySelector('#tarjeta-pokemon #height').textContent = `Height: ${altura / 10} m`;
-  document.querySelector('#tarjeta-pokemon #weight').textContent = `Weight: ${peso / 10} kg`;
-
-  let type = '';
-  pokemon.types.forEach((tipo) => {
-    type += ` ${tipo.type.name} `;
-  });
-
-  document.querySelector('#tarjeta-pokemon #tipos').textContent = `Tipo: ${type}`;
+  document.querySelector('#tarjeta-pokemon #height').textContent = `Height: ${pokemon.altura()}`;
+  document.querySelector('#tarjeta-pokemon #weight').textContent = `Weight: ${pokemon.peso()}`;
+  document.querySelector('#tarjeta-pokemon #tipos').textContent = `Tipo: ${pokemon.tipos()}`;
   document.querySelector('#tarjeta-pokemon').className = 'tarjeta-pokemon';
   bloquearInput();
 }

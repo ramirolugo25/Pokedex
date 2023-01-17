@@ -15,6 +15,7 @@ import {
   obtenerCantidadDePokemones,
 } from './storage.js';
 
+
 async function manejarInputPokemon() {
   mostrarContenedorCargando();
   const nombrePokemon = this.classList[0];
@@ -36,9 +37,9 @@ export async function cargarPokemones(numeroPagina) {
   const pokemones = await obtenerPokemones(numeroPagina);
   agregarClasesNombresPokemones(pokemones);
 
-  pokemones.forEach(async (pokemon) => {
-    const datosPokemon = await obtenerPokemon(pokemon.name);
-    agregarPokemon(datosPokemon);
+  pokemones.forEach(async (p) => {
+    const pokemon = await obtenerPokemon(p.name);
+    agregarPokemon(pokemon);
   });
 
   inicializarInputsPokemones();
@@ -105,7 +106,6 @@ async function manejarInputBuscar() {
   const valorInput = document.querySelector('#busqueda input').value.toLowerCase();
 
   const respuestaPokemon = await obtenerPokemon(valorInput);
-
   if (respuestaPokemon === 'Pokemon no encontrado') {
     document.querySelector('#error').className = '';
   } else {

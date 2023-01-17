@@ -3,6 +3,7 @@ import {
   obtenerCantidadDePokemonesAPI,
   obtenerPokemonAPI,
 } from './pokeAPI.js';
+import { Pokemon } from './Pokemon.js';
 
 function guardarPokemones(numeroPagina, pokemones) {
   localStorage.setItem(`pagina-${numeroPagina}`, JSON.stringify(pokemones));
@@ -43,30 +44,32 @@ export async function obtenerCantidadDePokemones() {
   return cantidadPokemones;
 }
 
-function guardarPokemon(nombreID, pokemon) {
-  const pokemonJSON = {};
-  pokemonJSON.height = pokemon.height;
-  pokemonJSON.id = pokemon.id;
-  pokemonJSON.name = pokemon.name;
-  pokemonJSON.sprites = pokemon.sprites;
-  pokemonJSON.types = pokemon.types;
-  pokemonJSON.weight = pokemon.weight;
-
-  localStorage.setItem(nombreID, JSON.stringify(pokemonJSON));
+function guardarPokemon(pokemon) {
+  localStorage.setItem(pokemon.name, JSON.stringify(pokemon));
 }
 
-export async function obtenerPokemon(nombreID) {
-  let pokemon = JSON.parse(localStorage.getItem(nombreID));
+export async function obtenerPokemon(nombreId) {
+  let pokemonJSON = JSON.parse(localStorage.getItem(nombreId));
+  
 
-  if (pokemon === null) {
-    pokemon = await obtenerPokemonAPI(nombreID);
+  
 
+  if (pokemonJSON === null) {
     try {
-      guardarPokemon(nombreID, pokemon);
+      const datosPokemon = await obtenerPokemonAPI(nombreId);
+      if(datosPokemon === 'Pokemon no encontrado'){
+        return datosPokemon;
+      }
+      const {id, name, height, weight, types, sprites} = datosPokemon;
+      const pokemon =  new Pokemon(id, name, height, weight, types, sprites); 
+      guardarPokemon(pokemon);
+      return pokemon;
     } catch (e) {
       console.error(e);
-    }
+    } 
+  } else{
+    let pokemon = new Pokemon(pokemonJSON.id, pokemonJSON.name, pokemonJSON.height, pokemonJSON.weight, pokemonJSON.types, pokemonJSON.sprites);
+    return pokemon;
   }
 
-  return pokemon;
 }

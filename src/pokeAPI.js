@@ -11,11 +11,11 @@ export function obtenerCantidadDePokemonesAPI() {
     .then((respuestaJSON) => respuestaJSON.count);
 }
 
-export function obtenerPokemonAPI(nombreID) {
+export function obtenerPokemonAPI(nombreId) {
   const URL_BASE = 'https://pokeapi.co/api/v2/pokemon/';
-  return fetch(`${URL_BASE}${nombreID}`)
+  return fetch(`${URL_BASE}${nombreId}`)
     .then((respuesta) => {
-      if (respuesta.ok && nombreID !== '') {
+      if (respuesta.ok && nombreId !== '') {
         return respuesta.json();
       }
       return 'Pokemon no encontrado';
